@@ -3,7 +3,7 @@ import useAuthStore from '../auth/useAuthStore'
 import { useNavigate } from 'react-router-dom'
 
 export default function TopNav() {
-  const { user, firm, logout: clearStore } = useAuthStore()
+  const { user, logout: clearStore } = useAuthStore()
   const navigate = useNavigate()
 
   const handleLogout = async () => {
@@ -13,13 +13,11 @@ export default function TopNav() {
   }
 
   return (
-    <header className="bg-gray-900 p-4 flex justify-between items-center text-white font-futuristic">
-      <div>
-        <span className="text-sm text-gray-400">{user?.email}</span>
-      </div>
+    <header className="sticky top-0 z-20 bg-black/60 backdrop-blur-md border-b border-white/10 px-6 py-3 flex items-center justify-between">
+      <span className="text-sm text-white/70">{user?.email}</span>
       <button
         onClick={handleLogout}
-        className="border border-white px-3 py-1 rounded hover:bg-red-500"
+        className="px-3 py-1 rounded border border-white/30 text-sm hover:bg-white hover:text-black transition"
       >
         Logout
       </button>
